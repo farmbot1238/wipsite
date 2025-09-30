@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Farm Bot</title>
+<style>
+:root {
+  --glass: rgba(0,0,0,0.55);
+  --white: #fff;
+  --green: #1b5e20;
+  --black: #000;
+}
+
+/* عام */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body, html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+/* الصفحة الرئيسية */
+.home {
+  background: url('rojet.jpg') no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  text-align: center;
+}
+
+.glass-box {
+  background: var(--glass);
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 600px;
+  width: 90%;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.menu {
+  margin: 20px 0;
+}
+
+.menu button {
+  display: block;
+  width: 200px;
+  margin: 10px auto;
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  background: var(--green);
+  color: var(--white);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.menu button:hover {
+  background: #2e7d32;
+}
+
+/* قسم الاقتراحات */
+#suggestions {
+  background: var(--black);
+  padding: 30px;
+  border-radius: 15px 15px 0 0;
+  margin: 0;
+  width: 100%;
+  color: var(--white);
+  text-align: center;
+}
+
+#suggestions h2 {
+  margin-bottom: 10px;
+}
+
+#suggestions p {
+  margin-bottom: 20px;
+}
+
+#suggestions input, #suggestions button {
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  border-radius: 8px;
+}
+
+#suggestions input {
+  width: 250px;
+}
+
+#suggestions button {
+  background: var(--green);
+  color: var(--white);
+  cursor: pointer;
+}
+
+#suggestions button:hover {
+  background: #2e7d32;
+}
+
+/* الصفحات الداخلية */
+.page {
+  display: none;
+  background: url('about-bg.jpg') no-repeat center center/cover;
+  height: 100vh;
+  padding: 40px;
+  color: var(--white);
+  overflow-y: auto;
+}
+
+.page .content {
+  background: var(--glass);
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.page button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: var(--green);
+  border: none;
+  border-radius: 8px;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.page button:hover {
+  background: #2e7d32;
+}
+
+/* زر اللغة */
+.lang-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--glass);
+  color: var(--white);
+  border: none;
+  padding: 8px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<!-- الصفحة الرئيسية -->
+<section class="home" id="home">
+  <button class="lang-toggle" onclick="toggleLang()">AR</button>
+  <div class="glass-box">
+    <h1 id="title">FARM BOT</h1>
+    <p id="subtitle">Revolution in the world of agriculture</p>
+    <div class="menu">
+      <button onclick="openPage('about')">About</button>
+      <button onclick="openPage('what')">What it does</button>
+      <button onclick="window.location.href='https://farmbot1238.github.io/Farm-bot/'">Contact</button>
+    </div>
+  </div>
+</section>
+
+<!-- قسم الاقتراحات -->
+<div id="suggestions">
+  <h2 id="suggest-title">Suggestions</h2>
+  <p id="suggest-text">We believe in any suggestion that can develop and enhance our project.</p>
+  <p><strong>Phone:</strong> +962 7XXXXXXXX</p>
+  <form onsubmit="event.preventDefault(); alert('Suggestion sent!');">
+    <input type="text" placeholder="Write your suggestion..." required>
+    <button type="submit">Send</button>
+  </form>
+</div>
+
+<!-- صفحة About -->
+<section class="page" id="about">
+  <div class="content">
+    <h2>About</h2>
+    <p>
+Farm Bot is an intelligent agricultural robot fully designed and built in Jordan by the students Haitham Al-Maaytah and Abdulrahman Al-Maaytah. It is designed to assist farmers and improve farming processes in a modern and efficient way. It monitors crops, tracks their growth, and identifies plants ready for harvest. It also helps maintain plant health by detecting harmful plants and removing them automatically. Farm Bot is capable of operating independently and making accurate agricultural decisions based on surrounding data. It can also be controlled and monitored remotely, providing farmers with detailed reports on the condition of the land and crops, which facilitates planning and decision-making. It contributes to increasing productivity and reducing resource waste, operates continuously throughout the day with high efficiency, and represents an ideal integration of modern technology with traditional farming. Farm Bot is the perfect farming partner for achieving smarter and more efficient agriculture, saving time and effort, enhancing crop monitoring accuracy, making farming processes smoother and more manageable, and serving as a step toward the future of smart and sustainable agriculture.
+    </p>
+    <button onclick="closePage('about')">Exit</button>
+  </div>
+</section>
+
+<!-- صفحة What it does -->
+<section class="page" id="what">
+  <div class="content">
+    <h2>What it does</h2>
+    <p>[Write the explanation here...]</p>
+    <button onclick="closePage('what')">Exit</button>
+  </div>
+</section>
+
+<script>
+function openPage(pageId) {
+  document.getElementById('home').style.display = 'none';
+  document.getElementById('suggestions').style.display = 'none';
+  document.getElementById(pageId).style.display = 'block';
+}
+
+function closePage(pageId) {
+  document.getElementById(pageId).style.display = 'none';
+  document.getElementById('home').style.display = 'flex';
+  document.getElementById('suggestions').style.display = 'block';
+}
+
+// تبديل اللغة
+let lang = "en";
+function toggleLang() {
+  if (lang === "en") {
+    document.getElementById("title").innerText = "المزرعة الذكية";
+    document.getElementById("subtitle").innerText = "ثورة في عالم الزراعة";
+    document.querySelectorAll(".menu button")[0].innerText = "حول";
+    document.querySelectorAll(".menu button")[1].innerText = "ماذا يفعل";
+    document.querySelectorAll(".menu button")[2].innerText = "تواصل";
+    document.getElementById("suggest-title").innerText = "اقتراحات";
+    document.getElementById("suggest-text").innerText = "نحن نؤمن بأي اقتراح يمكن أن يطور ويعزز مشروعنا.";
+    document.querySelector(".lang-toggle").innerText = "EN";
+    lang = "ar";
+  } else {
+    document.getElementById("title").innerText = "FARM BOT";
+    document.getElementById("subtitle").innerText = "Revolution in the world of agriculture";
+    document.querySelectorAll(".menu button")[0].innerText = "About";
+    document.querySelectorAll(".menu button")[1].innerText = "What it does";
+    document.querySelectorAll(".menu button")[2].innerText = "Contact";
+    document.getElementById("suggest-title").innerText = "Suggestions";
+    document.getElementById("suggest-text").innerText = "We believe in any suggestion that can develop and enhance our project.";
+    document.querySelector(".lang-toggle").innerText = "AR";
+    lang = "en";
+  }
+}
+</script>
+
+</body>
+</html>
